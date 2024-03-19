@@ -40,7 +40,7 @@ public class GitlabController {
         @RequestParam(defaultValue = "SORTING_ID") @Pattern(regexp = "SORTING_ID|SORTING_NAME", message = "Invalid sorting value - choose SORTING_ID or SORTING_NAME") String sorting,
         @RequestParam(defaultValue = "ORDERING_ASC") @Pattern(regexp = "ORDERING_ASC|ORDERING_DESC", message = "Invalid ordering value - choose ORDERING_ASC or ORDERING_DESC") String ordering) {
         try {
-            logger.debug("pozdrav z kontroleru");
+
             validateParameters(restrict,limit,sorting,ordering);
 
             Restrict restrictEnum = EnumUtils.getEnumIgnoreCase(Restrict.class, restrict);
