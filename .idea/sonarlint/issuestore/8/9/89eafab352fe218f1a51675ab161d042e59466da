@@ -1,0 +1,10 @@
+
+g	java:S112*"FDefine and throw a dedicated exception instead of using a generic one.(®Ö Ëûÿÿÿÿ8ìœ…Àå1
+o
+java:S6204""RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8üœ…Àå1
+o
+java:S6204("RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8ıœ…Àå1
+E
+java:S62055"(Remove this redundant block and "break".(›ûä·8şœ…Àå1
+E
+java:S62059"(Remove this redundant block and "break".(›ûä·8şœ…Àå1

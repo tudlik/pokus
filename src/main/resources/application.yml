@@ -1,0 +1,12 @@
+server:
+  port: 8082
+
+springdoc:
+  api-docs.path: /api-docs
+
+gitlab:
+  apiUrl: "https://gitlab.com/api/v4/projects"
+
+logging:
+  level:
+    org.example: trace
