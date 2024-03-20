@@ -73,17 +73,14 @@ public class GitlabProjectServiceImpl implements GitLabProjectService {
                 filteredProjectDTOs = projectDTOs.stream()
                     .filter(projectDTO -> projectDTO.getId() % 2 == 0)
                     .collect(Collectors.toList());
-                break;
             }
             case RESTRICT_ODD -> {
                 filteredProjectDTOs = projectDTOs.stream()
                     .filter(projectDTO -> projectDTO.getId() % 2 != 0)
                     .collect(Collectors.toList());
-                break;
             }
             case RESTRICT_ALL -> {
                 filteredProjectDTOs = projectDTOs;
-                break;
             }
             default -> throw new IllegalArgumentException("Invalid sort atribute" + restrict);
         }

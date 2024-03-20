@@ -10,13 +10,13 @@ E
 java:S62059"(Remove this redundant block and "break".(›ûä·8çòª×å1
 d
 java:S1854F"GRemove this useless assignment to local variable "filteredProjectDTOs".(ĞÛ“8Ğ•´×å1
-E
-java:S6205L"(Remove this redundant block and "break".(›ûä·8èòª×å1
+>
+java:S6205H"Remove this redundant block.(„ƒ´Ùşÿÿÿÿ8Ò –Ùå1
 o
 java:S6204K"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8Ğ¶­×å1
-E
-java:S6205R"(Remove this redundant block and "break".(›ûä·8ğ•®×å1
+>
+java:S6205M"Remove this redundant block.(©ß²Îşÿÿÿÿ8Ò –Ùå1
 o
-java:S6204Q"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8ğ•®×å1
-E
-java:S6205V"(Remove this redundant block and "break".(›ûä·8ñ•®×å1
+java:S6204P"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8ğ•®×å1
+>
+java:S6205R"Remove this redundant block.(±Èå»úÿÿÿÿ8Ò –Ùå1
