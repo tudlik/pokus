@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Pattern;
 import java.util.List;
 import org.apache.commons.lang3.EnumUtils;
 import org.example.dto.GitlabProjectDTO;
