@@ -35,7 +35,7 @@ public class GitlabController {
     @GetMapping("/projects")
     public List<GitlabProjectDTO> getDataFromGitlabProjects(
         @RequestParam(defaultValue = "RESTRICT_ALL") String restrict,
-        @RequestParam(defaultValue = "10") @Min(value = 1, message = "Limit must be greater than or equal to 1") int limit,
+        @RequestParam(defaultValue = "10") int limit,
         @RequestParam(defaultValue = "SORTING_ID") String sorting,
         @RequestParam(defaultValue = "ORDERING_ASC") String ordering) {
         try {
