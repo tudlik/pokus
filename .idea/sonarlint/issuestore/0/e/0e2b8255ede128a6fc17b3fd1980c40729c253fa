@@ -1,2 +1,4 @@
 
-g	java:S1126"FDefine and throw a dedicated exception instead of using a generic one.(ì™µ°üÿÿÿÿ8™”ƒÃå1
+g	java:S1125"FDefine and throw a dedicated exception instead of using a generic one.(ì™µ°üÿÿÿÿ8™”ƒÃå1
+e
+java:S1128"CRemove this unused import 'jakarta.validation.constraints.Pattern'.(Îá˜ãúÿÿÿÿ8€¹ÎÖå1

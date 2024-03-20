@@ -35,13 +35,12 @@ public class GitlabController {
     @Operation(summary = "get data from Gitlab projects", description = "get data from Gilab project like a list of objects")
     @GetMapping("/projects")
     public List<GitlabProjectDTO> getDataFromGitlabProjects(
-        @RequestParam(defaultValue = "RESTRICT_ALL") @Pattern(regexp = "RESTRICT_ALL|RESTRICT_EVEN|RESTRICT_ODD", message = "Invalid sorting value - choose RESTRICT_ALL or RESTRICT_EVEN or RESTRICT_ODD") String restrict,
+        @RequestParam(defaultValue = "RESTRICT_ALL") String restrict,
         @RequestParam(defaultValue = "10") @Min(value = 1, message = "Limit must be greater than or equal to 1") int limit,
-        @RequestParam(defaultValue = "SORTING_ID") @Pattern(regexp = "SORTING_ID|SORTING_NAME", message = "Invalid sorting value - choose SORTING_ID or SORTING_NAME") String sorting,
-        @RequestParam(defaultValue = "ORDERING_ASC") @Pattern(regexp = "ORDERING_ASC|ORDERING_DESC", message = "Invalid ordering value - choose ORDERING_ASC or ORDERING_DESC") String ordering) {
+        @RequestParam(defaultValue = "SORTING_ID") String sorting,
+        @RequestParam(defaultValue = "ORDERING_ASC") String ordering) {
         try {
-
-            validateParameters(restrict,limit,sorting,ordering);
+            validateParameters(restrict, limit, sorting, ordering);
 
             Restrict restrictEnum = EnumUtils.getEnumIgnoreCase(Restrict.class, restrict);
             Sorting sortingEnum = EnumUtils.getEnumIgnoreCase(Sorting.class, sorting);

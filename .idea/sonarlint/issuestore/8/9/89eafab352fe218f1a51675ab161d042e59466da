@@ -1,10 +1,22 @@
 
-g	java:S112*"FDefine and throw a dedicated exception instead of using a generic one.(®Ö Ëûÿÿÿÿ8ìœ…Àå1
+g	java:S112*"FDefine and throw a dedicated exception instead of using a generic one.(®Ö Ëûÿÿÿÿ8Ûòª×å1
 o
-java:S6204""RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8üœ…Àå1
+java:S6204""RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8åòª×å1
 o
-java:S6204("RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8ıœ…Àå1
+java:S6204("RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8åòª×å1
 E
-java:S62055"(Remove this redundant block and "break".(›ûä·8şœ…Àå1
+java:S62055"(Remove this redundant block and "break".(›ûä·8çòª×å1
 E
-java:S62059"(Remove this redundant block and "break".(›ûä·8şœ…Àå1
+java:S62059"(Remove this redundant block and "break".(›ûä·8çòª×å1
+d
+java:S1854F"GRemove this useless assignment to local variable "filteredProjectDTOs".(ĞÛ“8Ğ•´×å1
+E
+java:S6205L"(Remove this redundant block and "break".(›ûä·8èòª×å1
+o
+java:S6204K"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8Ğ¶­×å1
+E
+java:S6205R"(Remove this redundant block and "break".(›ûä·8ğ•®×å1
+o
+java:S6204Q"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8ğ•®×å1
+E
+java:S6205V"(Remove this redundant block and "break".(›ûä·8ñ•®×å1

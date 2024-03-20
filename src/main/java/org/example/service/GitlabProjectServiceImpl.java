@@ -33,7 +33,7 @@ public class GitlabProjectServiceImpl implements GitLabProjectService {
                 .sorted(sortProjects(sorting, ordering))
                 .collect(Collectors.toList());
 
-            List<GitlabProjectDTO> fileredProjectDTOs = filterProjects(restrict, gitlabProjectDTOS);
+            List<GitlabProjectDTO> fileredProjectDTOs = filterByEvenOddAll(restrict, gitlabProjectDTOS);
 
             return fileredProjectDTOs.stream()
                 .limit(limit)
@@ -66,26 +66,29 @@ public class GitlabProjectServiceImpl implements GitLabProjectService {
 
     }
 
-    private List<GitlabProjectDTO> filterProjects(Restrict restrict, List<GitlabProjectDTO> projectDTOs) {
-        List<GitlabProjectDTO> restricedProjectDTOs = new ArrayList<>();
-        if (restrict.equals(Restrict.RESTRICT_EVEN)) {
-            for (int i = 0; i < projectDTOs.size(); i++) {
-                if ((i + 1) % 2 == 0) {
-                    restricedProjectDTOs.add(projectDTOs.get(i));
-                }
+    private List<GitlabProjectDTO> filterByEvenOddAll(Restrict restrict, List<GitlabProjectDTO> projectDTOs) {
+        List<GitlabProjectDTO> filteredProjectDTOs = new ArrayList<>();
+        switch (restrict) {
+            case RESTRICT_EVEN -> {
+                filteredProjectDTOs = projectDTOs.stream()
+                    .filter(projectDTO -> projectDTO.getId() % 2 == 0)
+                    .collect(Collectors.toList());
+                break;
             }
-        } else if (restrict.equals(Restrict.RESTRICT_ODD)) {
-            for (int i = 0; i < projectDTOs.size(); i++) {
-                if ((i + 1) % 2 == 0) {
-                    restricedProjectDTOs.add(projectDTOs.get(i));
-                }
+            case RESTRICT_ODD -> {
+                filteredProjectDTOs = projectDTOs.stream()
+                    .filter(projectDTO -> projectDTO.getId() % 2 != 0)
+                    .collect(Collectors.toList());
+                break;
             }
-        } else if (restrict.equals(Restrict.RESTRICT_ALL)) {
-            restricedProjectDTOs = projectDTOs;
+            case RESTRICT_ALL -> {
+                filteredProjectDTOs = projectDTOs;
+                break;
+            }
+            default -> throw new IllegalArgumentException("Invalid sort atribute" + restrict);
         }
-        return restricedProjectDTOs;
+        return filteredProjectDTOs;
     }
-
 }
 
 
