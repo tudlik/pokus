@@ -1,4 +1,2 @@
 
-g	java:S1124"FDefine and throw a dedicated exception instead of using a generic one.(ì™µ°üÿÿÿÿ8öô©Øå1
-a
-java:S1128"?Remove this unused import 'jakarta.validation.constraints.Min'.(Ê¸ñüøÿÿÿÿ8†ŸªØå1
+g	java:S1123"FDefine and throw a dedicated exception instead of using a generic one.(ì™µ°üÿÿÿÿ8öô©Øå1
