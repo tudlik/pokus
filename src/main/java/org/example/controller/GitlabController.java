@@ -34,21 +34,29 @@ public class GitlabController {
     @GetMapping("/projects")
     public List<GitlabProjectDTO> getDataFromGitlabProjects(
         @RequestParam(defaultValue = "RESTRICT_ALL") String restrict,
-        @RequestParam(defaultValue = "10") int limit,
+        @RequestParam(defaultValue = "10") String limit,
         @RequestParam(defaultValue = "SORTING_ID") String sorting,
         @RequestParam(defaultValue = "ORDERING_ASC") String ordering) {
         try {
-            validateParameters(restrict, limit, sorting, ordering);
-
+            int limitInt = validateLimit(limit);
+            validateParameters(restrict, limitInt, sorting, ordering);
             Restrict restrictEnum = EnumUtils.getEnumIgnoreCase(Restrict.class, restrict);
             Sorting sortingEnum = EnumUtils.getEnumIgnoreCase(Sorting.class, sorting);
             Ordering orderingEnum = EnumUtils.getEnumIgnoreCase(Ordering.class, ordering);
 
-            return gitLabProjectService.getDataFromGitlab(restrictEnum, limit, sortingEnum, orderingEnum);
+            return gitLabProjectService.getDataFromGitlab(restrictEnum, limitInt, sortingEnum, orderingEnum);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Invalid request parameters:" + e.getMessage());
         } catch (Exception e) {
             throw new RuntimeException("Exception in controller layer" + e.getMessage());
+        }
+    }
+
+    private int validateLimit(String limitString) {
+        try {
+            return Integer.parseInt(limitString);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Limit must be a valid integer");
         }
     }
 

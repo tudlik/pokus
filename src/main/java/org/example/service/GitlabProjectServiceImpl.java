@@ -1,9 +1,7 @@
 package org.example.service;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.example.dto.GitlabProjectApiDTO;
 import org.example.dto.GitlabProjectDTO;
 import org.example.enums.Ordering;
@@ -31,13 +29,13 @@ public class GitlabProjectServiceImpl implements GitLabProjectService {
             List<GitlabProjectDTO> gitlabProjectDTOS = gitlabProjectApiDTOS.stream()
                 .map(gitlabProjectMapper::toGitlabProjectDTO)
                 .sorted(sortProjects(sorting, ordering))
-                .collect(Collectors.toList());
+                .toList();
 
             List<GitlabProjectDTO> fileredProjectDTOs = filterByEvenOddAll(restrict, gitlabProjectDTOS);
 
             return fileredProjectDTOs.stream()
                 .limit(limit)
-                .collect(Collectors.toList());
+                .toList();
         } catch (Exception e) {
             throw new RuntimeException("Error retrieving data from Gitlab" + e);
         }
@@ -50,11 +48,9 @@ public class GitlabProjectServiceImpl implements GitLabProjectService {
         switch (sorting) {
             case SORTING_ID -> {
                 comparator = Comparator.comparing(GitlabProjectDTO::getId);
-                break;
             }
             case SORTING_NAME -> {
                 comparator = Comparator.comparing(GitlabProjectDTO::getName);
-                break;
             }
             default -> throw new IllegalArgumentException("Invalid sort atribute" + sorting);
         }
@@ -67,17 +63,17 @@ public class GitlabProjectServiceImpl implements GitLabProjectService {
     }
 
     private List<GitlabProjectDTO> filterByEvenOddAll(Restrict restrict, List<GitlabProjectDTO> projectDTOs) {
-        List<GitlabProjectDTO> filteredProjectDTOs = new ArrayList<>();
+        List<GitlabProjectDTO> filteredProjectDTOs;
         switch (restrict) {
             case RESTRICT_EVEN -> {
                 filteredProjectDTOs = projectDTOs.stream()
                     .filter(projectDTO -> projectDTO.getId() % 2 == 0)
-                    .collect(Collectors.toList());
+                    .toList();
             }
             case RESTRICT_ODD -> {
                 filteredProjectDTOs = projectDTOs.stream()
                     .filter(projectDTO -> projectDTO.getId() % 2 != 0)
-                    .collect(Collectors.toList());
+                    .toList();
             }
             case RESTRICT_ALL -> {
                 filteredProjectDTOs = projectDTOs;
