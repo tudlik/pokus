@@ -25,5 +25,3 @@ i
 -src/main/java/org/example/enums/Ordering.java,c\9\c915d5ef3274a2482f12281e23bf598e6ca8679c
 \
 ,src/main/java/org/example/enums/Sorting.java,9\f\9fce8a8a24b9942c4cf90495260aa108236d5224
-m
-=src/main/java/org/example/configuration/WebConfiguration.java,e\3\e3724cc96c79fa092c3efb4c465e12d144a0fba1

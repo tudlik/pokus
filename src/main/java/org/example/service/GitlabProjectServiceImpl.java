@@ -26,16 +26,13 @@ public class GitlabProjectServiceImpl implements GitLabProjectService {
     public List<GitlabProjectDTO> getDataFromGitlab(Restrict restrict, int limit, Sorting sorting, Ordering ordering) {
         try {
             List<GitlabProjectApiDTO> gitlabProjectApiDTOS = gitlabConnector.getProjectsInfoFromGitlab();
-            List<GitlabProjectDTO> gitlabProjectDTOS = gitlabProjectApiDTOS.stream()
+            return gitlabProjectApiDTOS.stream()
                 .map(gitlabProjectMapper::toGitlabProjectDTO)
                 .sorted(sortProjects(sorting, ordering))
-                .toList();
-
-            List<GitlabProjectDTO> fileredProjectDTOs = filterByEvenOddAll(restrict, gitlabProjectDTOS);
-
-            return fileredProjectDTOs.stream()
+                .filter(projectDTO -> filterByEvenOddAll(restrict, projectDTO))
                 .limit(limit)
                 .toList();
+
         } catch (Exception e) {
             throw new RuntimeException("Error retrieving data from Gitlab" + e);
         }
@@ -46,12 +43,8 @@ public class GitlabProjectServiceImpl implements GitLabProjectService {
         Comparator<GitlabProjectDTO> comparator;
 
         switch (sorting) {
-            case SORTING_ID -> {
-                comparator = Comparator.comparing(GitlabProjectDTO::getId);
-            }
-            case SORTING_NAME -> {
-                comparator = Comparator.comparing(GitlabProjectDTO::getName);
-            }
+            case SORTING_ID -> comparator = Comparator.comparing(GitlabProjectDTO::getId);
+            case SORTING_NAME -> comparator = Comparator.comparing(GitlabProjectDTO::getName);
             default -> throw new IllegalArgumentException("Invalid sort atribute" + sorting);
         }
 
@@ -62,26 +55,22 @@ public class GitlabProjectServiceImpl implements GitLabProjectService {
 
     }
 
-    private List<GitlabProjectDTO> filterByEvenOddAll(Restrict restrict, List<GitlabProjectDTO> projectDTOs) {
-        List<GitlabProjectDTO> filteredProjectDTOs;
+    private static boolean filterByEvenOddAll(Restrict restrict, GitlabProjectDTO projectDTO) {
         switch (restrict) {
             case RESTRICT_EVEN -> {
-                filteredProjectDTOs = projectDTOs.stream()
-                    .filter(projectDTO -> projectDTO.getId() % 2 == 0)
-                    .toList();
+                return projectDTO.getId() % 2 == 0;
             }
             case RESTRICT_ODD -> {
-                filteredProjectDTOs = projectDTOs.stream()
-                    .filter(projectDTO -> projectDTO.getId() % 2 != 0)
-                    .toList();
+                return projectDTO.getId() % 2 != 0;
             }
             case RESTRICT_ALL -> {
-                filteredProjectDTOs = projectDTOs;
+                return true;
             }
             default -> throw new IllegalArgumentException("Invalid sort atribute" + restrict);
         }
-        return filteredProjectDTOs;
     }
+
+
 }
 
 
